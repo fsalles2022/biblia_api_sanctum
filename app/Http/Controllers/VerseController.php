@@ -69,6 +69,14 @@ class VerseController extends Controller
      */
     public function destroy($verse)
     {
-        return Verse::destroy($verse);
+        // return Verse::destroy($verse);
+        if(Verse::destroy($verse)){
+            return response()->json([
+                'message' => 'Versículo Deletado Com sucesso!'
+            ], 201);
+        }
+        return response()->json([
+            'message' => 'Versículo Não Pode Ser Excluído ou não existe!'
+        ], 404);
     }
 }

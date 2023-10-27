@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\TestamentController;
 use App\Http\Controllers\BookController;
@@ -9,7 +10,8 @@ use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | API Routes
-|--------------------------------------------------------------------------
+|--------------------------------------------------------------------------laravel asnctum
+
 |
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
@@ -45,19 +47,34 @@ use Illuminate\Support\Facades\Route;
 // Route::apiResource('verse', VerseController::class);
 
 // *****Aplicando apiResources nas rotas
-Route::apiResources(
-    [
-        'testament' => TestamentController::class,
-        'book' => BookController::class,
-        'verse' => VerseController::class, 
-    ]
+// Route::apiResources(
+//     [
+//         'testament' => TestamentController::class,
+//         'book' => BookController::class,
+//         'verse' => VerseController::class,
+//     ]
+// );
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+// Protegendo rotas 
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::apiResources(
+        [
+            'testament' => TestamentController::class,
+            'book' => BookController::class,
+            'verse' => VerseController::class,
+        ]
     );
+});
 
 
 
-Route::get('/testaments',[ function () {
-    return "Api teste";
-}]);
+
+// Route::get('/testaments', [function () {
+//     return "Api teste";
+// }]);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
