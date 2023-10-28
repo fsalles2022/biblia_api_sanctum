@@ -40,6 +40,12 @@ class BookController extends Controller
         // Melhorarndo o find
         $book = Book::find($book);
         if ($book) {
+            // return $book;
+            $response = [
+
+                'book' => $book,
+                'testaments' => $book->testament
+            ];
             return $book;
         }
         return response()->json([
