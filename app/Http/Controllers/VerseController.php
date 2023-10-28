@@ -37,7 +37,7 @@ class VerseController extends Controller
     public function show($verse)
     {
         // return  Verse::findOrFail($verse);
-        return  Verse::findO($verse);
+        return  Verse::find($verse);
         if ($verse) {
             return $verse;
         }
