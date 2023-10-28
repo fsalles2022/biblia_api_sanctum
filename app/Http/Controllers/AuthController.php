@@ -28,7 +28,7 @@ class AuthController extends Controller
         $token = $user->createToken($request->nameToken)->plainTextToken;
         $response = [
             'user' => $user,
-            'token' => $token
+            'token_register' => $token
         ];
         return response($response, 201);
     }
@@ -46,7 +46,7 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $token = $user->createToken('Usuáriologado')->plainTextToken;
+        $token = $user->createToken('Usuário_logado')->plainTextToken;
         $response = [
             'user' => $user,
             'token' => $token

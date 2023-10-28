@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('position');
             $table->string('name_book');
             $table->string('abbreviation');
-            $table->unsignedBigInteger('testaments_id');
+            $table->unsignedBigInteger('testament_id');
             $table->timestamps();
 
-            $table->foreign('testaments_id')->references('id')->on('testaments');
+            $table->foreign('testament_id')->references('id')->on('testaments');
         });
     }
 

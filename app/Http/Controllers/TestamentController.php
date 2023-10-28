@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Testament;
+use App\Models\Book;
 use Illuminate\Http\Request;
 
 class TestamentController extends Controller
@@ -40,7 +41,11 @@ class TestamentController extends Controller
         // return Testament::findOrFail($testament);
         $testament = Testament::find($testament);
         if ($testament) {
-            return $testament;
+            $response = [
+                'testament' =>$testament,
+                'books' => $testament->books
+            ];
+            return $response;
         }
         return response()->json([
             'message' => 'Testamento não Encontrado!'
@@ -56,7 +61,7 @@ class TestamentController extends Controller
         // $testemant->update($request->all());
         // return $testemant;
         $testament = Testament::find($testament);
-        if($testament){
+        if ($testament) {
             $testament->update($request->all());
             return $testament;
         }
@@ -71,7 +76,7 @@ class TestamentController extends Controller
     public function destroy(string $testament)
     {
         // return Testament::destroy($testament);
-        if(Testament::destroy($testament)){
+        if (Testament::destroy($testament)) {
             return response()->json([
                 'message' => 'Testamentoo Deletado comsucesso!'
             ], 201);
