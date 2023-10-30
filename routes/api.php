@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\TestamentController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerseController;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +59,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
+
 // Protegendo rotas 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResources(
@@ -65,6 +67,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
             'testament' => TestamentController::class,
             'book' => BookController::class,
             'verse' => VerseController::class,
+            'users' =>UserController::class,
         ]
     );
 });
