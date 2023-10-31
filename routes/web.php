@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\TestamentController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\VerseController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +21,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/usuarios_cadastrados', [UserController::class, 'index']);
+Route::get('/usuario_id/{id}', [UserController::class, 'show']);
+
+
+Route::apiResources(
+    [
+        'testament' => TestamentController::class,
+        'book' => BookController::class,
+        'verse' => VerseController::class,
+    ]
+);
+
+
