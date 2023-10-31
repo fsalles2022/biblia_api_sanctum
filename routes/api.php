@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\TestamentController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerseController;
 use Illuminate\Support\Facades\Route;
@@ -67,7 +68,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
             'testament' => TestamentController::class,
             'book' => BookController::class,
             'verse' => VerseController::class,
-            'users' =>UserController::class,
+            'user' =>UserController::class,
+            'chapter' =>ChapterController::class,
+
         ]
     );
 });

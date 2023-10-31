@@ -43,7 +43,9 @@ class TestamentController extends Controller
         if ($testament) {
             $response = [
                 'testament' =>$testament,
-                'books' => $testament->books
+                'books' => $testament->books,
+                'chapter' => $testament->chapters
+                   
             ];
             return $response;
         }

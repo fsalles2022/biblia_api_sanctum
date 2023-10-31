@@ -18,4 +18,9 @@ class Testament extends Model
     {
         return $this->hasMany(Book::class);
     }
+
+    public function chapters()
+    {
+        return $this->hasMany(Chapter::class);
+    }
 }

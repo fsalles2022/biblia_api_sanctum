@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use PHPUnit\Framework\Constraint\Constraint;
 
 return new class extends Migration
 {
@@ -12,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('testaments', function (Blueprint $table) {
+        Schema::create('chapters', function (Blueprint $table) {
             $table->id();
-            $table->string('testament_name')->unique();
-            $table->unsignedBigInteger('user_id');
+            $table->string('chapter_name');
+            $table->unsignedBigInteger('book_id');
+            $table->unsignedBigInteger('testament_id');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreign('testament_id')->references('id')->on('testaments');
+
+
         });
     }
 
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('testaments');
+        Schema::dropIfExists('chapters');
     }
 };

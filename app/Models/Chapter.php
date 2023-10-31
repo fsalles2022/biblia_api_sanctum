@@ -5,13 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Verse extends Model
+class Chapter extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['chapter', 'verse', 'text', 'book_id'];
-
-   
+    protected $fillable = ['chapter_name', 'book_id', 'testament_id' ];
 }
-

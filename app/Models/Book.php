@@ -15,4 +15,9 @@ class Book extends Model
     {
         return $this->belongsTo(Testament::class);
     }
+
+    public function verses()  {
+        return $this->belongsTo(Verse::class);
+        
+    }
 }

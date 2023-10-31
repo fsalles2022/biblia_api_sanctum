@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/usuarios_cadastrados', [UserController::class, 'index']);
-Route::get('/usuario_id/{id}', [UserController::class, 'show']);
+Route::get('/usuario_id/{id}', [UserController::class, 'showUser']);
 
 
 Route::apiResources(

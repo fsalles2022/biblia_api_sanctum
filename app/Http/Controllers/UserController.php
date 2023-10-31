@@ -4,15 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\user;
+use App\Models\Testament;
+use PHPUnit\Event\Code\Test;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return User::all();
+
+        $users = User::all();
+        $testaments = Testament::all();
+
+
+        return view('welcome')->with(compact('users', 'testament'));
     }
 
     /**
@@ -35,13 +42,21 @@ class UserController extends Controller
             $response = [
                 'name' => $user,
                 'testaments' => $user->testaments,
-                'books' => $user->books
+                // 'books' => $user->books,
+                // 'chapter' => $user->chapters
             ];
             return $response;
         }
         return response()->json([
             'message' => "usuário Não Encontrado!",
         ], 404);
+    }
+
+    public function showUser($user)
+    {
+        $users = User::findOrFail($user);
+
+        return view('usuario_id')->with(compact('users'));
     }
 
     /**
