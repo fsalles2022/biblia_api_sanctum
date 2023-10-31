@@ -9,10 +9,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Book extends Model
 {
     use HasFactory;
-    protected $fillable = ['book_name', 'book_position', 'abbreviation', 'testament_id'];
+    protected $fillable = ['book_name', 'book_position', 'abbreviation', 'testament_id', 'user_id'];
 
-    public function testament(){
+    public function testament()
+    {
         return $this->belongsTo(Testament::class);
     }
-    
 }

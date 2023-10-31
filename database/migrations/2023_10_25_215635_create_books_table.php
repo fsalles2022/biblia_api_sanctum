@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
     /**
@@ -17,9 +18,11 @@ return new class extends Migration
             $table->string('book_name');
             $table->string('abbreviation');
             $table->unsignedBigInteger('testament_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('testament_id')->references('id')->on('testaments');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

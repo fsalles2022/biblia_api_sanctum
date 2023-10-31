@@ -11,7 +11,7 @@ class Testament extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['testament_name'];
+    protected $fillable = ['testament_name', 'user_id'];
     // public $timestamps = false;
 
     public function books()

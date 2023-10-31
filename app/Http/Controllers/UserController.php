@@ -28,8 +28,20 @@ class UserController extends Controller
      */
     public function show($user)
     {
-        return  User::find($user);
-      
+        // return  User::findOrFail($user);
+        $user = User::find($user);
+        if ($user) {
+
+            $response = [
+                'name' => $user,
+                'testaments' => $user->testaments,
+                'books' => $user->books
+            ];
+            return $response;
+        }
+        return response()->json([
+            'message' => "usuário Não Encontrado!",
+        ], 404);
     }
 
     /**
